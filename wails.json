@@ -1,0 +1,20 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "actify-wails",
+  "outputfilename": "actify-wails",
+  "frontend:install": "npm install",
+  "frontend:build": "npm run build",
+  "frontend:dev:watcher": "npm run dev",
+  "frontend:dev:serverUrl": "auto",
+  "author": {
+    "name": "Lerte Smith",
+    "email": "lerte@qq.com"
+  },
+  "info": {
+    "companyName": "Actify",
+    "productName": "Wails with Actify",
+    "productVersion": "1.0.0",
+    "copyright": "Copyright © 2023",
+    "comments": "Built using Wails (https://wails.io) and Actify (https://actifyjs.com)"
+  }
+}
