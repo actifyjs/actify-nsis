@@ -17,10 +17,9 @@ func main() {
 
 	// Create application with options
 	err := wails.Run(&options.App{
-		Title:  "wails with actify",
-		Width:  1022,
-		Height: 670,
-		Frameless: true,
+		Title: "制作安装包",
+		MinWidth: 1022,
+		MinHeight: 670,
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},

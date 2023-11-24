@@ -1,57 +1,18 @@
-import { useMemo } from "react";
-import { Button, Icon, Spacer } from "actify";
-import { Link, useLocation } from "react-router-dom";
-
 export default function Footer() {
-  const { pathname } = useLocation();
-
-  const prevPage = useMemo(() => {
-    const pageNumber = pathname.slice(5);
-    if (pathname == "/") {
-    }
-    if (pageNumber == 1) {
-      return "/";
-    } else {
-      return `/page${parseInt(pageNumber) - 1}`;
-    }
-  }, [pathname]);
-
-  const nextPage = useMemo(() => {
-    const pageNumber = pathname.slice(5);
-    if (pathname == "/") {
-      return "/page1";
-    } else if (pageNumber == 3) {
-      return "/finish";
-    } else {
-      return `/page${parseInt(pageNumber) + 1}`;
-    }
-  }, [pathname]);
-
   return (
-    <footer className="h-14 px-2 shadow-inner flex items-center justify-between">
-      {pathname != "/" ||
-        (pathname != "/finish" && (
-          <Link to={prevPage}>
-            <Button color="error">
-              <Icon name="arrow-left" />
-              上一步{prevPage}
-            </Button>
-          </Link>
-        ))}
-      <Spacer />
-      {pathname == "/finish" ? (
-        <Button>
-          完成
-          <Icon name="check" />
-        </Button>
-      ) : (
-        <Link to={nextPage}>
-          <Button>
-            下一步{nextPage}
-            <Icon name="arrow-right" />
-          </Button>
-        </Link>
-      )}
+    <footer className="sticky bottom-0 z-50 bg-white h-10">
+      <div className="h-full flex items-center justify-center font-semibold">
+        Copyright &nbsp;{" "}
+        <a
+          target="_blank"
+          className="text-error underline"
+          href="https://lerte.com"
+        >
+          程序员Lerte
+        </a>{" "}
+        &nbsp; © &nbsp;
+        {new Date().getFullYear()}, All Rights Reserved.
+      </div>
     </footer>
   );
 }
