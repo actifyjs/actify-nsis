@@ -55,7 +55,7 @@ func (a *App) Nsis() {
 	nsisCompiler := "./nsis/makensis.exe"
 
 	// Path to your NSIS script file
-	nsisScript := "./nsis/actify.nsi"
+	nsisScript := "./nsis/install.nsi"
 	cmd := exec.Command(nsisCompiler, nsisScript)
 
 	// Set working directory if your script has relative paths
