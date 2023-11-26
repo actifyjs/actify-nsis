@@ -32,7 +32,7 @@ Unicode true
 ####
 ## Include the wails tools
 ####
-!include "actify.nsh"
+!include "install.nsh"
 
 # The version information for this two must consist of 4 parts
 VIProductVersion "${INFO_PRODUCTVERSION}.0"
