@@ -49,8 +49,21 @@ func (a *App) ChooseFolder() (string, error) {
 	return folder,nil
 }
 
+func writeToFile(fileName string, data string) error {
+	f, err := os.Create(fileName)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	_, err = f.WriteString(data)
+	if err != nil {
+		return err
+	}
+	return nil
+}
 
-func (a *App) Nsis() {
+func (a *App) Nsis(nsh string) {
+	writeToFile("./nsis/install.nsh", nsh)
 	// Path to your NSIS compiler (makensis.exe)
 	nsisCompiler := "./nsis/makensis.exe"
 
@@ -58,8 +71,6 @@ func (a *App) Nsis() {
 	nsisScript := "./nsis/install.nsi"
 	cmd := exec.Command(nsisCompiler, nsisScript)
 
-	// Set working directory if your script has relative paths
-	// cmd.Dir = "C:\\Path\\To\\"
 
 	// Redirect standard output and standard error
 	cmd.Stdout = os.Stdout

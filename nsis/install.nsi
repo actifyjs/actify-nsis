@@ -77,8 +77,8 @@ ShowInstDetails show # This will always show the installation details.
 
 
 Section "NSIS"
-    SetOutPath $INSTDIR
-    File /r "C:\Users\Administrator\Desktop\midjourney\*.*"
+  SetOutPath $INSTDIR
+  File /r "${INFO_INSTDIR}"
 SectionEnd
 
 

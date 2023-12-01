@@ -14,8 +14,8 @@ export function Minimize() {
   return window['go']['main']['App']['Minimize']();
 }
 
-export function Nsis() {
-  return window['go']['main']['App']['Nsis']();
+export function Nsis(arg1) {
+  return window['go']['main']['App']['Nsis'](arg1);
 }
 
 export function Quit() {

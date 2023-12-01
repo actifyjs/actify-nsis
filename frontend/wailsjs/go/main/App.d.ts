@@ -7,6 +7,6 @@ export function Maximize():Promise<void>;
 
 export function Minimize():Promise<void>;
 
-export function Nsis():Promise<void>;
+export function Nsis(arg1:string):Promise<void>;
 
 export function Quit():Promise<void>;
