@@ -1,10 +1,20 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import Layout from "@/components/Layout";
-import { TextField, Button, Icon } from "actify";
+import { TextField, Button, CircularProgress } from "actify";
 
+import {
+  Building,
+  AppWindow,
+  AlertCircle,
+  Copyright,
+  Bookmark,
+  Folder,
+} from "lucide-react";
 import { Nsis, ChooseFolder } from "@/wailsjs/go/main/App";
 
 export default function Start() {
+  const [loading, setLoading] = useState(false);
   const [workspace, setWorkspace] = useState("");
   // set information for nsis
   const [companyName, setCompanyName] = useState("");
@@ -18,7 +28,8 @@ export default function Start() {
     setWorkspace(folder);
   };
 
-  const nsis = () => {
+  const nsis = async () => {
+    setLoading(true);
     const nsh = `# DO NOT EDIT - Generated automatically by program
 
 !include "x64.nsh"
@@ -58,7 +69,9 @@ export default function Start() {
 
 RequestExecutionLevel "\${REQUEST_EXECUTION_LEVEL}"
 `;
-    Nsis(nsh);
+    const result = await Nsis(nsh);
+    toast.success(result);
+    setLoading(false);
   };
 
   return (
@@ -70,7 +83,7 @@ RequestExecutionLevel "\${REQUEST_EXECUTION_LEVEL}"
           onChange={(_) => setCompanyName(_)}
         >
           <TextField.LeadingIcon>
-            <Icon name="building" />
+            <Building />
           </TextField.LeadingIcon>
         </TextField>
         <TextField
@@ -79,7 +92,7 @@ RequestExecutionLevel "\${REQUEST_EXECUTION_LEVEL}"
           onChange={(_) => setProductName(_)}
         >
           <TextField.LeadingIcon>
-            <Icon name="app-window" />
+            <AppWindow />
           </TextField.LeadingIcon>
         </TextField>
         <TextField
@@ -88,7 +101,7 @@ RequestExecutionLevel "\${REQUEST_EXECUTION_LEVEL}"
           onChange={(_) => setProductVersion(_)}
         >
           <TextField.LeadingIcon>
-            <Icon name="alert-circle" />
+            <AlertCircle />
           </TextField.LeadingIcon>
         </TextField>
         <TextField
@@ -97,20 +110,20 @@ RequestExecutionLevel "\${REQUEST_EXECUTION_LEVEL}"
           onChange={(_) => setLegalCopyright(_)}
         >
           <TextField.LeadingIcon>
-            <Icon name="copyright" />
+            <Copyright />
           </TextField.LeadingIcon>
         </TextField>
         <TextField
           type="textarea"
           label="文件描述"
+          rows={3}
           value={fileDescription}
           onChange={(_) => setFileDescription(_)}
         >
           <TextField.LeadingIcon>
-            <Icon name="bookmark" />
+            <Bookmark />
           </TextField.LeadingIcon>
         </TextField>
-
         <TextField
           label="需要打包的目录"
           value={workspace}
@@ -118,21 +131,25 @@ RequestExecutionLevel "\${REQUEST_EXECUTION_LEVEL}"
           onChange={(_) => setWorkspace(_)}
         >
           <TextField.LeadingIcon>
-            <Icon name="folder" />
+            <Folder />
           </TextField.LeadingIcon>
         </TextField>
         <TextField label="生成安装文件的目录(可选)">
           <TextField.LeadingIcon>
-            <Icon name="folder" />
+            <Folder />
           </TextField.LeadingIcon>
         </TextField>
-
-        <Button
-          onClick={nsis}
-          className="h-14 rounded-l-none rounded-r"
-        >
-          开始打包
-        </Button>
+        {loading ? (
+          <CircularProgress indeterminate />
+        ) : (
+          <Button
+            onClick={nsis}
+            color="primary"
+            variant="elevated"
+          >
+            开始打包
+          </Button>
+        )}
       </div>
     </Layout>
   );

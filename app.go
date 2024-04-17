@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"os"
 	"os/exec"
 
@@ -62,7 +61,7 @@ func writeToFile(fileName string, data string) error {
 	return nil
 }
 
-func (a *App) Nsis(nsh string) {
+func (a *App) Nsis(nsh string) string {
 	writeToFile("./nsis/install.nsh", nsh)
 	// Path to your NSIS compiler (makensis.exe)
 	nsisCompiler := "./nsis/makensis.exe"
@@ -79,9 +78,7 @@ func (a *App) Nsis(nsh string) {
 	// Run the command
 	err := cmd.Run()
 	if err != nil {
-		fmt.Println("Error running NSIS compiler:", err)
-		return
+		return "Error running NSIS compiler:" + err.Error()
 	}
-
-	fmt.Println("NSIS compilation successful!")
+	return "NSIS compiler finished successfully"
 }

@@ -3,7 +3,7 @@ module.exports = {
   content: [
     "./src/**/*.{html,js,jsx}",
     "./components/**/*.{html,js,jsx}",
-    "./node_modules/actify/lib/*.{js,mjs}",
+    "./node_modules/actify/dist/*.{js,mjs}",
   ],
   theme: {
     extend: {

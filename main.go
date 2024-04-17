@@ -17,7 +17,7 @@ func main() {
 
 	// Create application with options
 	err := wails.Run(&options.App{
-		Title: "制作安装包",
+		Title: "Actify Nsis",
 		MinWidth: 1022,
 		MinHeight: 670,
 		AssetServer: &assetserver.Options{

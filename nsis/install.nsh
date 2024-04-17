@@ -5,23 +5,23 @@
 !include "FileFunc.nsh"
 
 !ifndef INFO_INSTDIR
-  !define INFO_INSTDIR "C:\Users\Administrator\Desktop\_dev\hugo-creator\dist\win-unpacked\*.*"
+  !define INFO_INSTDIR "C:\Users\Administrator\Desktop\zroker\*.*"
 !endif
 
 !ifndef INFO_PROJECTNAME
-  !define INFO_PROJECTNAME "赚它1个亿"
+  !define INFO_PROJECTNAME "啊撒旦风口浪尖啊"
 !endif
 !ifndef INFO_COMPANYNAME
-  !define INFO_COMPANYNAME "赚它1个亿"
+  !define INFO_COMPANYNAME "啊撒旦风口浪尖啊"
 !endif
 !ifndef INFO_PRODUCTNAME
-  !define INFO_PRODUCTNAME "HugoCreator"
+  !define INFO_PRODUCTNAME "十大风口浪尖阿桑的歌"
 !endif
 !ifndef INFO_PRODUCTVERSION
-  !define INFO_PRODUCTVERSION "1.0.0"
+  !define INFO_PRODUCTVERSION "1.2.4"
 !endif
 !ifndef INFO_COPYRIGHT
-  !define INFO_COPYRIGHT "Lerte版权所有©Copyright"
+  !define INFO_COPYRIGHT "阿斯顿发射点"
 !endif
 !ifndef PRODUCT_EXECUTABLE
   !define PRODUCT_EXECUTABLE "${INFO_PROJECTNAME}.exe"
